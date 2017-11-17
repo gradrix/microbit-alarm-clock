@@ -1,0 +1,16 @@
+{
+  "name": "clock",
+  "version": "1.0.1",
+  "description": "The micro:bit runtime common abstraction with examples.",
+  "license": "MIT",
+  "dependencies": {
+    "microbit": "lancaster-university/microbit"
+  },
+  "targetDependencies": {},
+  "bin": "./source",
+  "microbit-dal": {
+    "bluetooth": {
+    "enabled": 0
+    }
+  }
+}
