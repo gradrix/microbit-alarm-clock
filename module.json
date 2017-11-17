@@ -1,7 +1,7 @@
 {
-  "name": "clock",
+  "name": "microbit-alarm-clock",
   "version": "1.0.1",
-  "description": "The micro:bit runtime common abstraction with examples.",
+  "description": "Configurable Microbit alarm clock",
   "license": "MIT",
   "dependencies": {
     "microbit": "lancaster-university/microbit"

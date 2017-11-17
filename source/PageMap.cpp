@@ -55,12 +55,15 @@ uint8_t PageMap::GetRowIndex()
 };
 void PageMap::RenderPage() 
 {
-    uint8_t colIndx = this->GetColIndex();
+    Page* page = this->GetPage(1);
+    if (page)
+      page->RenderPage(this->GetColIndex());
+   /* uint8_t colIndx = this->GetColIndex();
     this->MoveUpTree();
     Page* page = this->GetPage();
     this->MoveDownTree(colIndx);
     if (page)
-      page->RenderPage(colIndx);
+      page->RenderPage(colIndx); */
 };
 Page* PageMap::GetPage(uint8_t pageOffset) 
 {

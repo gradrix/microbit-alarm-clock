@@ -31,6 +31,8 @@
 *.out
 *.app
 
+yotta.json
+
 # Dirs
 yotta_modules/
 yotta_targets/

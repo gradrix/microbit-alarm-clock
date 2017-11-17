@@ -24,14 +24,17 @@ void showMessage(string message)
     strcpy(cstr, message.c_str());
     ManagedString retManagedString(cstr);
     delete [] cstr;
-    mb.display.clear();
-    mb.display.scrollAsync(retManagedString);
+    while(mb.display.scrollAsync(retManagedString) == MICROBIT_BUSY) {
+    }
     refreshScreen = false;
   }
 }
 
 void navigate(int aPresses, int bPresses)
 {
+  doNotLoopMessage = false;
+  mb.display.clear();
+  
   if (aPresses == 1)
     pageMap->MoveToPreviousPage();  
   else if (bPresses == 1)
@@ -41,7 +44,7 @@ void navigate(int aPresses, int bPresses)
   else if (bPresses > 1)
     pageMap->MoveDownTree();
   
-  pageMap->RenderPage();
+  //pageMap->RenderPage();
 
   aPressCount = 0;
   bPressCount = 0;
@@ -131,7 +134,7 @@ void dateMenu(uint8_t pageColIndex)
 
 void dummy(uint8_t pg)
 {
-  showMessage("TODO");
+  showMessage(to_string(signed(pg)));
 }
 
 int main()
@@ -171,6 +174,7 @@ int main()
     initiatePress();
 
     mbClock->Tick(mb.systemTime());
+    pageMap->RenderPage();
     mb.sleep(120);
   }
   delete mbClock;
